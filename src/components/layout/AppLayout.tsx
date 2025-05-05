@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
@@ -12,14 +12,21 @@ const AppLayout = () => {
     avatar: "https://i.pravatar.cc/150?u=admin",
   });
 
-  // Toggle this value to switch between admin and superadmin for testing
+  // Set to superadmin for testing superadmin-specific routes
   const userRole: "admin" | "superadmin" = "superadmin";
+  const location = useLocation();
+
+  // Check for protected superadmin routes
+  const isSuperAdminRoute = location.pathname.startsWith('/admin/');
+  if (isSuperAdminRoute && userRole !== 'superadmin') {
+    return <Navigate to="/dashboard" replace />;
+  }
 
   return (
     <div className="min-h-screen flex">
       <Sidebar userRole={userRole} />
       
-      <div className="flex-1 flex flex-col md:ml-16 md:ml-64">
+      <div className="flex-1 flex flex-col md:ml-16">
         <Header 
           user={{
             ...user,
@@ -28,7 +35,7 @@ const AppLayout = () => {
           businessName="Style Boutique"
         />
         
-        <main className="flex-1 p-4 md:p-6 max-w-7xl mx-auto w-full">
+        <main className="flex-1 p-4 md:p-6 max-w-7xl mx-auto w-full bg-slate-50">
           <Outlet />
         </main>
       </div>

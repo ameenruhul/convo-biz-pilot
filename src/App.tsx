@@ -12,6 +12,9 @@ import Customers from "./pages/Customers";
 import Orders from "./pages/Orders";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import AdminSystem from "./pages/admin/AdminSystem";
+import AdminOrganization from "./pages/admin/AdminOrganization";
+import AdminUsers from "./pages/admin/AdminUsers";
 
 const queryClient = new QueryClient();
 
@@ -24,12 +27,18 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/" element={<AppLayout />}>
+            {/* Regular routes */}
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="conversations" element={<Conversations />} />
             <Route path="knowledge" element={<Knowledge />} />
             <Route path="customers" element={<Customers />} />
             <Route path="orders" element={<Orders />} />
             <Route path="settings" element={<Settings />} />
+            
+            {/* SuperAdmin only routes */}
+            <Route path="admin/system" element={<AdminSystem />} />
+            <Route path="admin/organization" element={<AdminOrganization />} />
+            <Route path="admin/users" element={<AdminUsers />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
