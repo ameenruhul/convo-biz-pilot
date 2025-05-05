@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -32,9 +33,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Facebook, MessageSquare, Settings as SettingsIcon, User, Users, Key } from "lucide-react";
+import { Facebook, MessageSquare, Settings as SettingsIcon, User, Users, Key, Plus } from "lucide-react";
 import { toast } from "sonner";
-import { useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 const Settings = () => {
   const [loading, setLoading] = useState(false);

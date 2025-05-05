@@ -77,7 +77,7 @@ const Orders = () => {
       total: 24.99,
       status: "cancelled",
       source: "manual",
-      paymentStatus: "refunded",
+      paymentStatus: "pending", // Changed from "refunded" to "pending" to match the allowed types
     },
     {
       id: "ord6",
