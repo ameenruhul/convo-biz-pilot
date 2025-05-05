@@ -5,10 +5,10 @@ import RecentActivity from "@/components/dashboard/RecentActivity";
 
 const Dashboard = () => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-3xl font-bold tracking-tight">Welcome to Style Boutique</h1>
+        <p className="text-muted-foreground mt-1">
           Overview of your business performance and recent activity
         </p>
       </div>
